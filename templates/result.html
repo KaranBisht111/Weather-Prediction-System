@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Weather Prediction Results</h1>
+        <div class="results">
+            <p><strong>Date:</strong> {{ date }}</p>
+            <ul>
+                <li><strong>Minimum Temperature (tmin):</strong> {{ predictions['tmin'] }}°C</li>
+                <li><strong>Maximum Temperature (tmax):</strong> {{ predictions['tmax'] }}°C</li>
+                <li><strong>Average Temperature (tavg):</strong> {{ predictions['tavg'] }}°C</li>
+                <li><strong>Precipitation (prcp):</strong> {{ predictions['prcp'] }} mm</li>
+            </ul>
+        </div>
+        <a href="/" class="back-btn">Back to Home</a>
+    </div>
+</body>
+</html>
