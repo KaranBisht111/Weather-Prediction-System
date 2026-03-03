@@ -4,11 +4,89 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prediction Results</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI', sans-serif; }
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #0ea5e9, #6366f1);
+            transition: 0.4s ease;
+        }
+
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            width: 420px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+            text-align: center;
+            transition: 0.4s ease;
+        }
+
+        h1 {
+            margin-bottom: 25px;
+            color: #1e293b;
+        }
+
+        .results {
+            margin-top: 25px;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: left;
+            transition: 0.4s ease;
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s ease;
+            background: #6366f1;
+            color: white;
+        }
+
+        .back-btn:hover {
+            background: #4f46e5;
+            transform: translateY(-2px);
+        }
+
+        /* Dynamic results card based on weather */
+        {% if predictions is defined %}
+            {% set tavg = predictions['tavg'] %}
+            {% set prcp = predictions['prcp'] %}
+
+            {% if prcp > 5 %}
+                .results { background:#1e3a8a; color:white; border:2px solid #0f172a; }
+            {% elif tavg >= 30 %}
+                .results { background:#ff6b6b; color:white; border:2px solid #dd2476; }
+            {% elif tavg < 15 %}
+                .results { background:#4facfe; color:white; border:2px solid #00f2fe; }
+            {% else %}
+                .results { background:#56ccf2; color:white; border:2px solid #2f80ed; }
+            {% endif %}
+        {% endif %}
+    </style>
 </head>
 <body>
     <div class="container">
         <h1>Weather Prediction Results</h1>
+
         <div class="results">
             <p><strong>Date:</strong> {{ date }}</p>
             <ul>
@@ -18,6 +96,7 @@
                 <li><strong>Precipitation (prcp):</strong> {{ predictions['prcp'] }} mm</li>
             </ul>
         </div>
+
         <a href="/" class="back-btn">Back to Home</a>
     </div>
 </body>
