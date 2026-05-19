@@ -52,14 +52,11 @@ Weather-Prediction-System/
 │   ├── index.html
 │   └── result.html
 │
-├── dataset/
-│   └── mumbai.csv
+├── mumbai.csv(dataset)
 │
-├── model/
-│   └── weather_model.pkl
+├── weather_model.pkl(model)
 │
-├── notebooks/
-│   └── weather_prediction.ipynb
+├── weather_prediction.ipynb(notebooks)
 │
 ├── app.py
 ├── requirements.txt
@@ -166,6 +163,14 @@ http://127.0.0.1:5000
 
 <p align="center">
   <img src="screenshots/result.png" width="850"/>
+</p>
+
+---
+
+### 📉 Weather Prediction Graph
+
+<p align="center">
+  <img src="screenshots/graph.png" width="850"/>
 </p>
 
 ---
